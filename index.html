@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Queen Shayla ❤️</title>
+
+<style>
+  /* Reset and Base Styles */
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    overflow: hidden;
+    transition: background 1.5s ease;
+  }
+
+  /* Card Styling */
+  .card {
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 30px;
+    border-radius: 25px;
+    width: 85%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    border: 1px solid rgba(255,255,255,0.2);
+    z-index: 10;
+    position: relative;
+  }
+
+  h2 { margin-top: 0; color: #fff; font-size: 24px; }
+  h3 { font-size: 18px; margin: 20px 0; line-height: 1.4; }
+
+  /* Button Container - FIXED for Mobile */
+  .btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Space between buttons */
+    margin-top: 25px;
+    min-height: 50px;
+    position: relative;
+  }
+
+  button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    min-width: 100px;
+    transition: transform 0.2s;
+    touch-action: manipulation; /* Better for mobile touch */
+  }
+
+  .yes { 
+    background: #ff2e63; 
+    color: white; 
+    box-shadow: 0 4px 15px rgba(255, 46, 99, 0.4);
+  }
+
+  .no { 
+    background: #444; 
+    color: white; 
+    position: relative; 
+    z-index: 99;
+    transition: all 0.5s ease; /* Smooth slow movement */
+  }
+
+  /* Typewriter Text Style */
+  #typeText {
+    white-space: pre-line;
+    line-height: 1.7;
+    font-size: 16px;
+    text-align: left;
+    font-style: italic;
+    color: #ffccd5;
+    margin-top: 15px;
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+
+  /* Floating Hearts */
+  .heart {
+    position: absolute;
+    bottom: -20px;
+    font-size: 20px;
+    animation: fly 4s linear forwards;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  @keyframes fly {
+    from { transform: translateY(0) rotate(0deg); opacity: 1; }
+    to { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+  }
+</style>
+</head>
+<body>
+
+<audio id="music" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card" id="content">
+  <h2>Hey Shayla ❤️</h2>
+  <p>Tmk chhara amar ek pal-o chole na... 🥺</p>
+  <h3>Will you be my bacchar ma? 👶❤️</h3>
+
+  <div class="btn-container">
+    <button class="yes" onclick="yesClick()">Yes 💖</button>
+    <button class="no" id="noBtn" onmouseover="moveNo()" onclick="moveNo()">No 😢</button>
+  </div>
+</div>
+
+<script>
+  // Function to move the NO button smoothly
+  function moveNo() {
+    const btn = document.getElementById("noBtn");
+    btn.style.position = "fixed"; // Switch to fixed for free movement
+    
+    const padding = 60;
+    const x = Math.random() * (window.innerWidth - btn.offsetWidth - padding);
+    const y = Math.random() * (window.innerHeight - btn.offsetHeight - padding);
+    
+    btn.style.left = Math.max(padding/2, x) + "px";
+    btn.style.top = Math.max(padding/2, y) + "px";
+  }
+
+  // Function when YES is clicked
+  function yesClick() {
+    // Change theme to Deep Passionate Red
+    document.body.style.background = "#1a0000";
+    
+    // Play Music
+    const audio = document.getElementById("music");
+    audio.play().catch(e => console.log("Audio play blocked"));
+
+    // Replace Content
+    document.getElementById("content").innerHTML = `
+      <h2 style="color: #ff2e63; font-size: 28px;">My Queen Shayla... 🔥</h2>
+      <div id="typeText"></div>
+    `;
+
+    // The Spicy & Bold Message
+    const text = `Tmr ei 'Yes' amar rokto-e agun dhoriye diyeche... 🥵
+
+Ami tmk shudhu bhalobashi na, tmk niye amar nesha hoye geche.
+I want to feel every curve of your body against mine.
+
+Ami chai tmk khub kach theke onubhob korte,
+Tmr nishwash amar gharey lagbe,
+Ar amar thont khuje nibe tmr shobcheye naram jayga gulo... 💋
+
+I want to explore you, touch you, and love you 
+je bhabe agey kew kokhono koreni.
+Tmr sharir-er protiti bhaje amar bhalobashar chinho thakbe. 🔥
+
+I want to lose myself inside you tonight and forever.
+You are mine, only mine. 💍`;
+
+    typeWriter(text);
+    setInterval(createHeart, 300);
+  }
+
+  // Typewriter effect logic
+  function typeWriter(text) {
+    let i = 0;
+    const el = document.getElementById("typeText");
+    function write() {
+      if (i < text.length) {
+        el.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(write, 45);
+      }
+    }
+    write();
+  }
+
+  // Generate floating hearts
+  function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 4000);
+  }
+</script>
+
+</body>
+</html>
