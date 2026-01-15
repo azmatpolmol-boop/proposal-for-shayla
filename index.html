@@ -78,7 +78,6 @@
     font-size: 20px;
     animation: fly 4s linear forwards;
     z-index: 1;
-    pointer-events: none;
   }
 
   @keyframes fly {
@@ -90,7 +89,7 @@
 <body>
 
 <audio id="music" loop>
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" type="audio/mpeg">
+  <source src="https://pagalfree.com/musics/128-Pal%20Pal%20Dil%20Ke%20Paas%20-%20Arijit%20Singh%20128%20Kbps.mp3" type="audio/mpeg">
 </audio>
 
 <div class="card" id="content">
@@ -116,59 +115,5 @@
   }
 
   function yesClick() {
-    // Intense Dark Background for the Passionate part
     document.body.style.background = "#1a0000";
-    
-    const audio = document.getElementById("music");
-    audio.play().catch(e => console.log("Audio play needs user interaction"));
-
-    document.getElementById("content").innerHTML = `
-      <h2 style="color: #ff2e63; font-size: 26px;">My Queen Shayla... 🔥</h2>
-      <div id="typeText"></div>
-    `;
-
-    const text = `Tmr ei 'Yes' amar rokto-e agun dhoriye diyeche... 🥵
-
-Ami tmk shudhu bhalobashi na, tmk niye amar nesha hoye geche.
-I want to feel every curve of your body against mine.
-
-Ami chai tmk khub kach theke onubhob korte,
-Tmr nishwash amar gharey lagbe,
-Ar amar thont khuje nibe tmr shobcheye naram jayga gulo... 💋
-
-I want to explore you, touch you, and love you 
-je bhabe agey kew kokhono koreni.
-Tmr sharir-er protiti bhaje amar bhalobashar chinho thakbe. 🔥
-
-I want to lose myself inside you tonight and forever.
-You are mine, only mine. 💍`;
-
-    typeWriter(text);
-    setInterval(createHeart, 300);
-  }
-
-  function typeWriter(text) {
-    let i = 0;
-    const el = document.getElementById("typeText");
-    function write() {
-      if (i < text.length) {
-        el.innerHTML += text.charAt(i);
-        i++;
-        setTimeout(write, 50);
-      }
-    }
-    write();
-  }
-
-  function createHeart() {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerHTML = "❤️";
-    heart.style.left = Math.random() * 100 + "vw";
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 4000);
-  }
-</script>
-
-</body>
-</html>
+    const audio = document
