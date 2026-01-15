@@ -6,7 +6,6 @@
 <title>For My Queen Shayla ❤️</title>
 
 <style>
-  /* Reset and Base Styles */
   body {
     margin: 0;
     padding: 0;
@@ -21,9 +20,8 @@
     transition: background 1.5s ease;
   }
 
-  /* Card Styling */
   .card {
-    background: rgba(0, 0, 0, 0.55);
+    background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     padding: 30px;
@@ -31,53 +29,37 @@
     width: 85%;
     max-width: 400px;
     text-align: center;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
     border: 1px solid rgba(255,255,255,0.2);
     z-index: 10;
-    position: relative;
   }
 
   h2 { margin-top: 0; color: #fff; font-size: 24px; }
   h3 { font-size: 18px; margin: 20px 0; line-height: 1.4; }
 
-  /* Button Container - FIXED for Mobile */
   .btn-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px; /* Space between buttons */
+    gap: 15px;
     margin-top: 25px;
     min-height: 50px;
-    position: relative;
   }
 
   button {
-    padding: 12px 25px;
+    padding: 12px 22px;
     border: none;
     border-radius: 50px;
     font-size: 16px;
     cursor: pointer;
     font-weight: bold;
-    min-width: 100px;
+    min-width: 90px;
     transition: transform 0.2s;
-    touch-action: manipulation; /* Better for mobile touch */
   }
 
-  .yes { 
-    background: #ff2e63; 
-    color: white; 
-    box-shadow: 0 4px 15px rgba(255, 46, 99, 0.4);
-  }
+  .yes { background: #ff2e63; color: white; box-shadow: 0 4px 15px rgba(255, 46, 99, 0.4); }
+  .no { background: #444; color: white; position: relative; z-index: 99; transition: all 0.5s ease; }
 
-  .no { 
-    background: #444; 
-    color: white; 
-    position: relative; 
-    z-index: 99;
-    transition: all 0.5s ease; /* Smooth slow movement */
-  }
-
-  /* Typewriter Text Style */
   #typeText {
     white-space: pre-line;
     line-height: 1.7;
@@ -86,18 +68,16 @@
     font-style: italic;
     color: #ffccd5;
     margin-top: 15px;
-    max-height: 60vh;
+    max-height: 50vh;
     overflow-y: auto;
   }
 
-  /* Floating Hearts */
   .heart {
     position: absolute;
     bottom: -20px;
     font-size: 20px;
     animation: fly 4s linear forwards;
     z-index: 1;
-    pointer-events: none;
   }
 
   @keyframes fly {
@@ -109,7 +89,7 @@
 <body>
 
 <audio id="music" loop>
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
 </audio>
 
 <div class="card" id="content">
@@ -124,35 +104,26 @@
 </div>
 
 <script>
-  // Function to move the NO button smoothly
   function moveNo() {
     const btn = document.getElementById("noBtn");
-    btn.style.position = "fixed"; // Switch to fixed for free movement
-    
+    btn.style.position = "fixed";
     const padding = 60;
     const x = Math.random() * (window.innerWidth - btn.offsetWidth - padding);
     const y = Math.random() * (window.innerHeight - btn.offsetHeight - padding);
-    
     btn.style.left = Math.max(padding/2, x) + "px";
     btn.style.top = Math.max(padding/2, y) + "px";
   }
 
-  // Function when YES is clicked
   function yesClick() {
-    // Change theme to Deep Passionate Red
     document.body.style.background = "#1a0000";
-    
-    // Play Music
     const audio = document.getElementById("music");
-    audio.play().catch(e => console.log("Audio play blocked"));
+    audio.play().catch(e => console.log("Audio blocked"));
 
-    // Replace Content
     document.getElementById("content").innerHTML = `
-      <h2 style="color: #ff2e63; font-size: 28px;">My Queen Shayla... 🔥</h2>
+      <h2 style="color: #ff2e63; font-size: 26px;">My Queen Shayla... 🔥</h2>
       <div id="typeText"></div>
     `;
 
-    // The Spicy & Bold Message
     const text = `Tmr ei 'Yes' amar rokto-e agun dhoriye diyeche... 🥵
 
 Ami tmk shudhu bhalobashi na, tmk niye amar nesha hoye geche.
@@ -173,7 +144,6 @@ You are mine, only mine. 💍`;
     setInterval(createHeart, 300);
   }
 
-  // Typewriter effect logic
   function typeWriter(text) {
     let i = 0;
     const el = document.getElementById("typeText");
@@ -181,19 +151,17 @@ You are mine, only mine. 💍`;
       if (i < text.length) {
         el.innerHTML += text.charAt(i);
         i++;
-        setTimeout(write, 45);
+        setTimeout(write, 50);
       }
     }
     write();
   }
 
-  // Generate floating hearts
   function createHeart() {
     const heart = document.createElement("div");
     heart.className = "heart";
     heart.innerHTML = "❤️";
     heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = (Math.random() * 20 + 10) + "px";
     document.body.appendChild(heart);
     setTimeout(() => heart.remove(), 4000);
   }
